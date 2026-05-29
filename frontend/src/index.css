@@ -12,17 +12,10 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 .custom-scroll::-webkit-scrollbar-thumb {
   background: var(--scroll-color, #888);
   border-radius: 4px;
-  opacity: 0.5;
 }
 .custom-scroll { scrollbar-width: thin; scrollbar-color: var(--scroll-color, #888) transparent; }
 
-/* ════════════════════════════════════════════════════════════════════════════
-   PERSONALITY BACKGROUNDS
-   Each class must set:  position + inset + z-index  (they are fixed overlays)
-   ::before = first animated layer
-   ::after  = second animated layer (accent / glow)
-   ════════════════════════════════════════════════════════════════════════════ */
-
+/* ── Shared base for all personality backgrounds ─────────────────────────── */
 [class^="personality-"],
 [class*=" personality-"] {
   position: fixed;
@@ -30,471 +23,364 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
   z-index: -10;
   overflow: hidden;
 }
-
-/* ── 1. Neon ─────────────────────────────────────────────────────────────── */
-.personality-neon {
-  background: linear-gradient(135deg, #060010 0%, #0d0020 60%, #060010 100%);
-}
-.personality-neon::before {
+[class^="personality-"]::before,
+[class^="personality-"]::after,
+[class*=" personality-"]::before,
+[class*=" personality-"]::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,0,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,0,255,0.035) 1px, transparent 1px);
-  background-size: 46px 46px;
-  animation: neonGrid 18s linear infinite;
-}
-.personality-neon::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 15% 85%, rgba(255,0,255,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 15%, rgba(0,255,255,0.07) 0%, transparent 55%);
-  animation: neonPulse 5s ease-in-out infinite alternate;
-}
-@keyframes neonGrid   { to { background-position: 46px 46px; } }
-@keyframes neonPulse  { from { opacity: 0.5; } to { opacity: 1; } }
-
-/* ── 2. Zen ──────────────────────────────────────────────────────────────── */
-.personality-zen {
-  background: linear-gradient(160deg, #f7f0e8 0%, #ede4d5 50%, #f0ebe0 100%);
-}
-.personality-zen::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 70%, rgba(92,138,106,0.10) 0%, transparent 50%),
-    radial-gradient(circle at 70% 30%, rgba(160,120,80,0.07) 0%, transparent 50%);
-  animation: zenBreath 8s ease-in-out infinite alternate;
-}
-.personality-zen::after {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background-image: radial-gradient(circle, rgba(92,138,106,0.06) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: zenFloat 30s linear infinite;
-}
-@keyframes zenBreath { from { opacity: 0.6; } to { opacity: 1; } }
-@keyframes zenFloat  { to { transform: translate(30px, 30px); } }
-
-/* ── 3. Sherlock ─────────────────────────────────────────────────────────── */
-.personality-sherlock {
-  background: linear-gradient(150deg, #f2e8d5 0%, #e8d9bc 50%, #f0e4cc 100%);
-}
-.personality-sherlock::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(58,30,10,0.10) 100%);
-}
-.personality-sherlock::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 80% 20%, rgba(139,32,32,0.06) 0%, transparent 40%),
-    radial-gradient(circle at 20% 80%, rgba(74,53,32,0.06) 0%, transparent 40%);
-  animation: sherlockFog 10s ease-in-out infinite alternate;
-}
-@keyframes sherlockFog { from { opacity: 0.4; } to { opacity: 1; } }
-
-/* ── 4. Retro Synth ──────────────────────────────────────────────────────── */
-.personality-retro-synth {
-  background: linear-gradient(180deg, #0f0025 0%, #1a0040 50%, #0f0025 100%);
-}
-.personality-retro-synth::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  background-image:
-    linear-gradient(rgba(255,110,199,0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,110,199,0.08) 1px, transparent 1px);
-  background-size: 60px 40px;
-  transform: perspective(400px) rotateX(55deg);
-  transform-origin: bottom center;
-  animation: retroGridScroll 4s linear infinite;
-}
-.personality-retro-synth::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 45%;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(255,110,199,0.15) 0%, transparent 70%),
-    linear-gradient(to bottom, transparent 50%, rgba(255,110,199,0.06) 100%);
-}
-@keyframes retroGridScroll { to { background-position: 0px -40px; } }
-
-/* ── 5. Steampunk ────────────────────────────────────────────────────────── */
-.personality-steampunk {
-  background: linear-gradient(135deg, #1a0e05 0%, #2a1808 60%, #1a0e05 100%);
-}
-.personality-steampunk::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 50%, rgba(212,135,10,0.12) 0%, transparent 45%),
-    radial-gradient(circle at 80% 50%, rgba(184,115,51,0.10) 0%, transparent 45%);
-  animation: steamPulse 6s ease-in-out infinite alternate;
-}
-.personality-steampunk::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(212,135,10,0.04) 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: gearSpin 40s linear infinite;
-}
-@keyframes steamPulse { from { opacity: 0.5; } to { opacity: 1; } }
-@keyframes gearSpin   { to { background-position: 30px 30px; } }
-
-/* ── 6. Space Marine ─────────────────────────────────────────────────────── */
-.personality-space-marine {
-  background: linear-gradient(160deg, #080d12 0%, #0d1520 60%, #080d12 100%);
-}
-.personality-space-marine::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
-  background-size: 100px 100px;
-  animation: starField 60s linear infinite;
-}
-.personality-space-marine::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(61,220,132,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(61,220,132,0.05) 0%, transparent 60%);
-  animation: hudPulse 3s ease-in-out infinite alternate;
-}
-@keyframes starField { to { background-position: 100px 100px; } }
-@keyframes hudPulse  { from { opacity: 0.6; } to { opacity: 1; } }
-
-/* ── 7. Fantasy Elf ──────────────────────────────────────────────────────── */
-.personality-fantasy-elf {
-  background: linear-gradient(150deg, #080c1a 0%, #0d1228 60%, #080c1a 100%);
-}
-.personality-fantasy-elf::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(200,184,240,0.55) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: elfStars 8s ease-in-out infinite alternate, starField 50s linear infinite;
-}
-.personality-fantasy-elf::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 30%, rgba(184,168,224,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 70%, rgba(212,175,55,0.07) 0%, transparent 55%);
-  animation: elfGlow 7s ease-in-out infinite alternate;
-}
-@keyframes elfStars { from { opacity: 0.3; } to { opacity: 1; } }
-@keyframes elfGlow  { from { opacity: 0.5; } to { opacity: 1; } }
-
-/* ── 8. Noir Detective ───────────────────────────────────────────────────── */
-.personality-noir-detective {
-  background: linear-gradient(180deg, #0e0e0e 0%, #161616 50%, #0e0e0e 100%);
-}
-.personality-noir-detective::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,0.05) 2px,
-    rgba(0,0,0,0.05) 4px
-  );
-  animation: rainFall 1.2s linear infinite;
-}
-.personality-noir-detective::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 10%, rgba(212,165,32,0.06) 0%, transparent 60%);
-  animation: lampSwing 6s ease-in-out infinite alternate;
-}
-@keyframes rainFall  { to { background-position: 0 20px; } }
-@keyframes lampSwing { from { transform: translateX(-20px); } to { transform: translateX(20px); } }
-
-/* ── 9. Brutalist AI ─────────────────────────────────────────────────────── */
-.personality-brutalist-ai {
-  background: #f8f8f8;
-}
-.personality-brutalist-ai::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-.personality-brutalist-ai::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 60%, rgba(0,0,0,0.04) 100%);
+  pointer-events: none;
 }
 
-/* ── 10. Gothic Vampire ──────────────────────────────────────────────────── */
-.personality-gothic-vampire {
-  background: linear-gradient(150deg, #06000a 0%, #0d000f 60%, #06000a 100%);
-}
-.personality-gothic-vampire::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(153,0,0,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(153,0,0,0.08) 0%, transparent 60%);
-  animation: bloodGlow 5s ease-in-out infinite alternate;
-}
-.personality-gothic-vampire::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 40px,
-    rgba(153,0,0,0.015) 40px,
-    rgba(153,0,0,0.015) 41px
-  );
-}
-@keyframes bloodGlow { from { opacity: 0.5; } to { opacity: 1; } }
-
-/* ── 11. Pirate Captain ──────────────────────────────────────────────────── */
-.personality-pirate-captain {
-  background: linear-gradient(180deg, #0a1828 0%, #10223a 60%, #0a1828 100%);
-}
-.personality-pirate-captain::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(32,168,168,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 0%, rgba(200,150,12,0.07) 0%, transparent 40%);
-  animation: waveSwell 7s ease-in-out infinite alternate;
-}
-.personality-pirate-captain::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30%;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 60px,
-    rgba(32,168,168,0.04) 60px,
-    rgba(32,168,168,0.04) 120px
-  );
-  animation: waveShift 8s linear infinite;
-}
-@keyframes waveSwell { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
-@keyframes waveShift { to { background-position: 120px 0; } }
-
-/* ── 12. Cottagecore Witch ───────────────────────────────────────────────── */
-.personality-cottagecore-witch {
-  background: linear-gradient(150deg, #f5f0e5 0%, #eee5d5 60%, #f5f0e5 100%);
-}
-.personality-cottagecore-witch::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(122,158,114,0.12) 2px, transparent 2px);
-  background-size: 50px 50px;
-  animation: cozyFloat 20s linear infinite;
-}
-.personality-cottagecore-witch::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(196,131,122,0.10) 0%, transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(122,158,114,0.10) 0%, transparent 45%);
-  animation: cozyGlow 8s ease-in-out infinite alternate;
-}
-@keyframes cozyFloat { to { background-position: 50px 50px; } }
-@keyframes cozyGlow  { from { opacity: 0.5; } to { opacity: 1; } }
-
-/* ── 13. Glitch Core ─────────────────────────────────────────────────────── */
-.personality-glitch-core {
-  background: #020202;
-}
-.personality-glitch-core::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 3px,
-    rgba(0,255,65,0.025) 3px,
-    rgba(0,255,65,0.025) 4px
-  );
-  animation: scanlines 0.1s linear infinite;
-}
-.personality-glitch-core::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(0,255,65,0.06) 0%, transparent 70%);
-  animation: glitchPulse 2s ease-in-out infinite alternate;
-}
+/* ════════════════════════════════════════════════════════════════════════════
+   SHARED KEYFRAMES
+   ════════════════════════════════════════════════════════════════════════════ */
+@keyframes gridFlow    { to { background-position: 46px 46px; } }
+@keyframes starField   { to { background-position: 100px 100px; } }
+@keyframes slowPulse   { from { opacity: 0.4; } to { opacity: 1; } }
 @keyframes scanlines   { to { background-position: 0 4px; } }
-@keyframes glitchPulse {
-  0%   { opacity: 0.4; transform: translateX(0); }
-  49%  { opacity: 1;   transform: translateX(0); }
-  50%  { opacity: 0.8; transform: translateX(2px); }
-  51%  { opacity: 1;   transform: translateX(0); }
-  100% { opacity: 0.6; transform: translateX(0); }
+@keyframes floatUp     { to { background-position: 30px 30px; } }
+@keyframes hueShift    {
+  0%   { filter: hue-rotate(0deg); }
+  50%  { filter: hue-rotate(30deg); }
+  100% { filter: hue-rotate(0deg); }
 }
-
-/* ── 14. Royal Courtier ──────────────────────────────────────────────────── */
-.personality-royal-courtier {
-  background: linear-gradient(150deg, #100820 0%, #1a1030 60%, #100820 100%);
-}
-.personality-royal-courtier::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,215,0,0.06) 1px, transparent 1px);
-  background-size: 55px 55px;
-  animation: royalShimmer 6s ease-in-out infinite alternate;
-}
-.personality-royal-courtier::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.09) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(152,85,212,0.08) 0%, transparent 60%);
-}
-@keyframes royalShimmer { from { opacity: 0.4; } to { opacity: 1; } }
-
-/* ── 15. Solar Punk ──────────────────────────────────────────────────────── */
-.personality-solar-punk {
-  background: linear-gradient(160deg, #031208 0%, #061c0e 60%, #031208 100%);
-}
-.personality-solar-punk::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: conic-gradient(
-    from 0deg at 80% 20%,
-    rgba(232,208,48,0.06) 0deg,
-    transparent 60deg,
-    rgba(232,208,48,0.04) 120deg,
-    transparent 180deg,
-    rgba(0,180,216,0.04) 240deg,
-    transparent 300deg,
-    rgba(232,208,48,0.06) 360deg
-  );
-  animation: sunRays 20s linear infinite;
-}
-.personality-solar-punk::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(0,180,100,0.07) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: vineGrow 15s linear infinite;
+@keyframes glitchJump {
+  0%, 90%, 100% { transform: translateX(0); }
+  92%           { transform: translateX(-3px); }
+  94%           { transform: translateX(3px); }
+  96%           { transform: translateX(-2px); }
 }
 @keyframes sunRays  { to { transform: rotate(360deg); } }
-@keyframes vineGrow { to { background-position: 20px 20px; } }
+@keyframes wavePush { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
 
-/* ── 16. Corporate Guru ──────────────────────────────────────────────────── */
-.personality-corporate-guru {
-  background: linear-gradient(160deg, #f0f4f8 0%, #e8eef4 60%, #f0f4f8 100%);
+/* ════════════════════════════════════════════════════════════════════════════
+   1. SKIBIDI — Radioactive toilet green, moving grid
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-skibidi {
+  background: linear-gradient(135deg, #020a02 0%, #051505 60%, #020a02 100%);
 }
-.personality-corporate-guru::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(26,86,219,0.07) 1px, transparent 1px);
+.personality-skibidi::before {
+  background-image:
+    linear-gradient(rgba(57,255,20,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,255,20,0.045) 1px, transparent 1px);
+  background-size: 46px 46px;
+  animation: gridFlow 12s linear infinite;
+}
+.personality-skibidi::after {
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(57,255,20,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,68,0,0.07) 0%, transparent 50%);
+  animation: slowPulse 4s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   2. NPC — Flat beige with diamond tile pattern
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-npc {
+  background: linear-gradient(160deg, #c8bda8 0%, #b8a990 60%, #c8bda8 100%);
+}
+.personality-npc::before {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(90,80,65,0.06) 0px, rgba(90,80,65,0.06) 1px, transparent 1px, transparent 50%),
+    repeating-linear-gradient(-45deg, rgba(90,80,65,0.06) 0px, rgba(90,80,65,0.06) 1px, transparent 1px, transparent 50%);
+  background-size: 40px 40px;
+}
+.personality-npc::after {
+  background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(58,40,20,0.08) 100%);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   3. SIGMA — Dark navy, lone-wolf stars, cold glow
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-sigma {
+  background: linear-gradient(160deg, #08080f 0%, #0f0f1a 60%, #08080f 100%);
+}
+.personality-sigma::before {
+  background-image: radial-gradient(circle, rgba(120,120,220,0.45) 1px, transparent 1px);
+  background-size: 90px 90px;
+  animation: starField 70s linear infinite;
+}
+.personality-sigma::after {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(80,80,160,0.08) 0%, transparent 65%);
+  animation: slowPulse 8s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   4. GIGACHAD — Dark gold, divine radial crown
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-gigachad {
+  background: linear-gradient(150deg, #0a0800 0%, #150f00 60%, #0a0800 100%);
+}
+.personality-gigachad::before {
+  background: conic-gradient(
+    from 0deg at 50% 40%,
+    rgba(255,215,0,0.07) 0deg, transparent 40deg,
+    rgba(255,215,0,0.05) 80deg, transparent 120deg,
+    rgba(255,215,0,0.07) 160deg, transparent 200deg,
+    rgba(255,215,0,0.05) 240deg, transparent 280deg,
+    rgba(255,215,0,0.07) 320deg, transparent 360deg
+  );
+  animation: sunRays 30s linear infinite;
+}
+.personality-gigachad::after {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(192,192,192,0.05) 0%, transparent 55%);
+  animation: slowPulse 5s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   5. DELULU — Dark purple, pink sparkle dots
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-delulu {
+  background: linear-gradient(150deg, #150018 0%, #200025 60%, #150018 100%);
+}
+.personality-delulu::before {
+  background-image: radial-gradient(circle, rgba(255,105,180,0.55) 1px, transparent 1px);
+  background-size: 65px 65px;
+  animation: starField 35s linear infinite, slowPulse 4s ease-in-out infinite alternate;
+}
+.personality-delulu::after {
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(255,105,180,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(218,112,214,0.10) 0%, transparent 50%);
+  animation: slowPulse 6s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   6. OHIO — Eerie lime-green fog, unsettling warp
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-ohio {
+  background: linear-gradient(180deg, #030800 0%, #060e00 60%, #030800 100%);
+}
+.personality-ohio::before {
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(136,255,0,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 30%, rgba(0,255,136,0.07) 0%, transparent 55%);
+  animation: wavePush 9s ease-in-out infinite alternate;
+}
+.personality-ohio::after {
+  background-image: radial-gradient(circle, rgba(136,255,0,0.20) 1px, transparent 1px);
+  background-size: 110px 110px;
+  animation: starField 80s linear infinite, slowPulse 7s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   7. RIZZ LORD — Deep purple, smooth aurora waves
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-rizz-lord {
+  background: linear-gradient(150deg, #0d0018 0%, #180028 60%, #0d0018 100%);
+}
+.personality-rizz-lord::before {
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(176,96,255,0.13) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 40%, rgba(255,96,176,0.09) 0%, transparent 50%);
+  animation: slowPulse 6s ease-in-out infinite alternate;
+}
+.personality-rizz-lord::after {
+  background-image: radial-gradient(circle, rgba(176,96,255,0.12) 1px, transparent 1px);
+  background-size: 75px 75px;
+  animation: starField 55s linear infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   8. LOOKSMAXX — Clinical white/blue, precision dot grid
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-looksmaxx {
+  background: linear-gradient(160deg, #f0f5ff 0%, #e5eeff 60%, #f0f5ff 100%);
+}
+.personality-looksmaxx::before {
+  background-image: radial-gradient(circle, rgba(0,64,204,0.09) 1px, transparent 1px);
   background-size: 36px 36px;
 }
-.personality-corporate-guru::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+.personality-looksmaxx::after {
   background:
-    radial-gradient(ellipse at 100% 0%, rgba(26,86,219,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 0% 100%, rgba(34,197,94,0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 100% 0%, rgba(0,64,204,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 0% 100%, rgba(0,128,255,0.05) 0%, transparent 45%);
 }
 
-/* ── 17. Cosmic Horror ───────────────────────────────────────────────────── */
-.personality-cosmic-horror {
-  background: linear-gradient(180deg, #010103 0%, #030108 60%, #010103 100%);
+/* ════════════════════════════════════════════════════════════════════════════
+   9. MEWING — Dark stone, near-silent minimal pulse
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-mewing {
+  background: linear-gradient(160deg, #141414 0%, #1c1c1c 60%, #141414 100%);
 }
-.personality-cosmic-horror::before {
-  content: '';
-  position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(88,0,160,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(127,255,0,0.05) 0%, transparent 40%),
-    radial-gradient(ellipse at 80% 20%, rgba(88,0,160,0.08) 0%, transparent 40%);
-  animation: voidRipple 12s ease-in-out infinite alternate;
+.personality-mewing::before {
+  background-image: radial-gradient(circle, rgba(180,180,180,0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
-.personality-cosmic-horror::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(127,255,0,0.15) 1px, transparent 1px);
-  background-size: 120px 120px;
-  animation: starField 90s linear infinite, cosmicPulse 6s ease-in-out infinite alternate;
+.personality-mewing::after {
+  background: radial-gradient(ellipse at 50% 50%, rgba(150,150,150,0.05) 0%, transparent 70%);
+  animation: slowPulse 12s ease-in-out infinite alternate;
 }
-@keyframes voidRipple  { from { transform: scale(0.9) rotate(0deg); } to { transform: scale(1.1) rotate(8deg); } }
-@keyframes cosmicPulse { from { opacity: 0.2; } to { opacity: 0.7; } }
 
-/* ── 18. Disney Sidekick ─────────────────────────────────────────────────── */
-.personality-disney-sidekick {
-  background: linear-gradient(160deg, #38bdf8 0%, #7dd3fc 50%, #38bdf8 100%);
+/* ════════════════════════════════════════════════════════════════════════════
+   10. GRINDSET — Near-black, intense red fire particles
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-grindset {
+  background: linear-gradient(160deg, #0a0000 0%, #150000 60%, #0a0000 100%);
 }
-.personality-disney-sidekick::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+.personality-grindset::before {
+  background-image: radial-gradient(circle, rgba(255,34,0,0.45) 1px, transparent 1px);
+  background-size: 55px 55px;
+  animation: floatUp 8s linear infinite, slowPulse 3s ease-in-out infinite alternate;
+}
+.personality-grindset::after {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255,34,0,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(255,102,0,0.08) 0%, transparent 50%);
+  animation: slowPulse 4s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   11. RATIO KING — Twitter blue/white, network dot lines
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-ratio-king {
+  background: linear-gradient(160deg, #e8f4fd 0%, #d8ecf8 60%, #e8f4fd 100%);
+}
+.personality-ratio-king::before {
+  background-image: radial-gradient(circle, rgba(29,155,240,0.10) 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+.personality-ratio-king::after {
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(29,155,240,0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 0% 100%, rgba(0,112,208,0.06) 0%, transparent 45%);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   12. BRAINROT — Near-black, RGB scanlines + glitch pulse
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-brainrot {
+  background: #020202;
+}
+.personality-brainrot::before {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent, transparent 3px,
+    rgba(255,0,255,0.03) 3px, rgba(255,0,255,0.03) 4px
+  );
+  animation: scanlines 0.08s linear infinite;
+}
+.personality-brainrot::after {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(255,0,255,0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 50%, rgba(0,255,255,0.06) 0%, transparent 45%);
+  animation: glitchJump 3s ease-in-out infinite, slowPulse 2s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   13. SLAY — Dark purple-black, hot pink glamour sparkles
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-slay {
+  background: linear-gradient(150deg, #0f0012 0%, #1a0020 60%, #0f0012 100%);
+}
+.personality-slay::before {
+  background-image: radial-gradient(circle, rgba(255,20,147,0.50) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: starField 30s linear infinite, slowPulse 3.5s ease-in-out infinite alternate;
+}
+.personality-slay::after {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,20,147,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(255,105,180,0.09) 0%, transparent 55%);
+  animation: slowPulse 5s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   14. NO CAP — Dark academic blue, subtle knowledge grid
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-nocap {
+  background: linear-gradient(160deg, #000a18 0%, #001020 60%, #000a18 100%);
+}
+.personality-nocap::before {
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, transparent 25%),
-    radial-gradient(circle at 70% 15%, rgba(255,255,255,0.5) 0%, transparent 20%),
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 30%),
-    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.5) 0%, transparent 20%);
-  animation: cloudDrift 25s ease-in-out infinite alternate;
+    linear-gradient(rgba(68,136,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(68,136,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
-.personality-disney-sidekick::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(245,158,11,0.25) 1.5px, transparent 1.5px);
+.personality-nocap::after {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(68,136,255,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(136,170,255,0.06) 0%, transparent 55%);
+  animation: slowPulse 8s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   15. VIBE — Dark lo-fi purple, chill floating stars
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-vibe {
+  background: linear-gradient(160deg, #080818 0%, #0f1025 60%, #080818 100%);
+}
+.personality-vibe::before {
+  background-image: radial-gradient(circle, rgba(167,139,250,0.40) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: starField 45s linear infinite, slowPulse 7s ease-in-out infinite alternate;
+}
+.personality-vibe::after {
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(167,139,250,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(52,211,153,0.07) 0%, transparent 50%);
+  animation: slowPulse 9s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   16. TOUCH GRASS — Dark green, gentle nature dots
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-touch-grass {
+  background: linear-gradient(160deg, #030a03 0%, #061506 60%, #030a03 100%);
+}
+.personality-touch-grass::before {
+  background-image: radial-gradient(circle, rgba(85,204,51,0.12) 2px, transparent 2px);
+  background-size: 50px 50px;
+  animation: floatUp 18s linear infinite;
+}
+.personality-touch-grass::after {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(85,204,51,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(136,255,68,0.06) 0%, transparent 45%);
+  animation: slowPulse 7s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   17. BASED — Near void, crimson oracle glow
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-based {
+  background: linear-gradient(160deg, #060005 0%, #0d000a 60%, #060005 100%);
+}
+.personality-based::before {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(204,34,0,0.10) 0%, transparent 60%);
+  animation: slowPulse 6s ease-in-out infinite alternate;
+}
+.personality-based::after {
+  background-image: radial-gradient(circle, rgba(204,34,0,0.20) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: starField 90s linear infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   18. CERTIFIED W — Dark trophy room, golden particles
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-certified-w {
+  background: linear-gradient(150deg, #080600 0%, #120e00 60%, #080600 100%);
+}
+.personality-certified-w::before {
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255,204,0,0.06) 0deg, transparent 50deg,
+    rgba(255,204,0,0.04) 100deg, transparent 150deg,
+    rgba(255,153,0,0.06) 200deg, transparent 250deg,
+    rgba(255,204,0,0.04) 300deg, transparent 350deg,
+    rgba(255,204,0,0.06) 360deg
+  );
+  animation: sunRays 25s linear infinite;
+}
+.personality-certified-w::after {
+  background-image: radial-gradient(circle, rgba(255,204,0,0.50) 1.5px, transparent 1.5px);
   background-size: 70px 70px;
-  animation: starSparkle 3s ease-in-out infinite alternate;
+  animation: starField 40s linear infinite, slowPulse 4s ease-in-out infinite alternate;
 }
-@keyframes cloudDrift  { from { transform: translateX(-15px); } to { transform: translateX(15px); } }
-@keyframes starSparkle { from { opacity: 0.3; } to { opacity: 0.9; } }
