@@ -56,315 +56,315 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 @keyframes wavePush { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   1. NPC — Flat beige with diamond tile pattern
+   1. NPC — Warm beige, diamond tile pattern
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-npc {
-  background: linear-gradient(160deg, #c8bda8 0%, #b8a990 60%, #c8bda8 100%);
+  background: linear-gradient(160deg, #ede6d8 0%, #e4d8c8 60%, #ede6d8 100%);
 }
 .personality-npc::before {
   background-image:
-    repeating-linear-gradient(45deg, rgba(90,80,65,0.06) 0px, rgba(90,80,65,0.06) 1px, transparent 1px, transparent 50%),
-    repeating-linear-gradient(-45deg, rgba(90,80,65,0.06) 0px, rgba(90,80,65,0.06) 1px, transparent 1px, transparent 50%);
+    repeating-linear-gradient(45deg, rgba(90,70,50,0.08) 0px, rgba(90,70,50,0.08) 1px, transparent 1px, transparent 50%),
+    repeating-linear-gradient(-45deg, rgba(90,70,50,0.08) 0px, rgba(90,70,50,0.08) 1px, transparent 1px, transparent 50%);
   background-size: 40px 40px;
 }
 .personality-npc::after {
-  background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(58,40,20,0.08) 100%);
+  background: radial-gradient(ellipse at 50% 50%, transparent 50%, rgba(90,70,50,0.06) 100%);
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   3. SIGMA — Dark navy, lone-wolf stars, cold glow
+   2. SIGMA — Light silver, cool dot grid
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-sigma {
-  background: linear-gradient(160deg, #131330 0%, #1c1c38 60%, #131330 100%);
+  background: linear-gradient(160deg, #e4e4f4 0%, #eaeaf8 60%, #e4e4f4 100%);
 }
 .personality-sigma::before {
-  background-image: radial-gradient(circle, rgba(120,120,220,0.45) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(64,64,160,0.18) 1px, transparent 1px);
   background-size: 90px 90px;
   animation: starField 70s linear infinite;
 }
 .personality-sigma::after {
   background:
-    radial-gradient(ellipse at 50% 50%, rgba(80,80,160,0.08) 0%, transparent 65%);
+    radial-gradient(ellipse at 50% 50%, rgba(64,64,160,0.07) 0%, transparent 65%);
   animation: slowPulse 8s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   4. GIGACHAD — Dark gold, divine radial crown
+   3. GIGACHAD — Light cream, golden crown rays
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-gigachad {
-  background: linear-gradient(150deg, #1c1600 0%, #261e00 60%, #1c1600 100%);
+  background: linear-gradient(150deg, #f8f0d8 0%, #f4e8c8 60%, #f8f0d8 100%);
 }
 .personality-gigachad::before {
   background: conic-gradient(
     from 0deg at 50% 40%,
-    rgba(255,215,0,0.07) 0deg, transparent 40deg,
-    rgba(255,215,0,0.05) 80deg, transparent 120deg,
-    rgba(255,215,0,0.07) 160deg, transparent 200deg,
-    rgba(255,215,0,0.05) 240deg, transparent 280deg,
-    rgba(255,215,0,0.07) 320deg, transparent 360deg
+    rgba(154,110,0,0.10) 0deg, transparent 40deg,
+    rgba(154,110,0,0.07) 80deg, transparent 120deg,
+    rgba(154,110,0,0.10) 160deg, transparent 200deg,
+    rgba(154,110,0,0.07) 240deg, transparent 280deg,
+    rgba(154,110,0,0.10) 320deg, transparent 360deg
   );
   animation: sunRays 30s linear infinite;
 }
 .personality-gigachad::after {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(192,192,192,0.05) 0%, transparent 55%);
+    radial-gradient(ellipse at 50% 0%, rgba(154,110,0,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(100,80,0,0.05) 0%, transparent 55%);
   animation: slowPulse 5s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   5. DELULU — Dark purple, pink sparkle dots
+   4. DELULU — Light pink, sparkle dots
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-delulu {
-  background: linear-gradient(150deg, #28003a 0%, #360048 60%, #28003a 100%);
+  background: linear-gradient(150deg, #fce0f0 0%, #f8d4ec 60%, #fce0f0 100%);
 }
 .personality-delulu::before {
-  background-image: radial-gradient(circle, rgba(255,105,180,0.55) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(192,24,110,0.28) 1px, transparent 1px);
   background-size: 65px 65px;
   animation: starField 35s linear infinite, slowPulse 4s ease-in-out infinite alternate;
 }
 .personality-delulu::after {
   background:
-    radial-gradient(ellipse at 30% 30%, rgba(255,105,180,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 70%, rgba(218,112,214,0.10) 0%, transparent 50%);
+    radial-gradient(ellipse at 30% 30%, rgba(192,24,110,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(200,80,180,0.08) 0%, transparent 50%);
   animation: slowPulse 6s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   6. RIZZ LORD — Deep purple, smooth aurora waves
+   5. RIZZ LORD — Light lavender, aurora waves
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-rizz-lord {
-  background: linear-gradient(150deg, #20002e 0%, #2e0050 60%, #20002e 100%);
+  background: linear-gradient(150deg, #ece0ff 0%, #e4d8ff 60%, #ece0ff 100%);
 }
 .personality-rizz-lord::before {
   background:
-    radial-gradient(ellipse at 20% 60%, rgba(176,96,255,0.13) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 40%, rgba(255,96,176,0.09) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 60%, rgba(104,32,192,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 40%, rgba(192,64,160,0.08) 0%, transparent 50%);
   animation: slowPulse 6s ease-in-out infinite alternate;
 }
 .personality-rizz-lord::after {
-  background-image: radial-gradient(circle, rgba(176,96,255,0.12) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(104,32,192,0.14) 1px, transparent 1px);
   background-size: 75px 75px;
   animation: starField 55s linear infinite;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   8. LOOKSMAXX — Clinical white/blue, precision dot grid
+   6. LOOKSMAXX — Light blue, precision dot grid
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-looksmaxx {
   background: linear-gradient(160deg, #f0f5ff 0%, #e5eeff 60%, #f0f5ff 100%);
 }
 .personality-looksmaxx::before {
-  background-image: radial-gradient(circle, rgba(0,64,204,0.09) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0,64,204,0.12) 1px, transparent 1px);
   background-size: 36px 36px;
 }
 .personality-looksmaxx::after {
   background:
-    radial-gradient(ellipse at 100% 0%, rgba(0,64,204,0.07) 0%, transparent 45%),
-    radial-gradient(ellipse at 0% 100%, rgba(0,128,255,0.05) 0%, transparent 45%);
+    radial-gradient(ellipse at 100% 0%, rgba(0,64,204,0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 0% 100%, rgba(0,128,255,0.06) 0%, transparent 45%);
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   9. BRAINROT — Near-black, RGB scanlines + glitch pulse
+   7. BRAINROT — Light purple, RGB scanlines + glitch pulse
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-brainrot {
-  background: #0e0618;
+  background: linear-gradient(180deg, #f8e0ff 0%, #fce8ff 100%);
 }
 .personality-brainrot::before {
   background-image: repeating-linear-gradient(
     to bottom,
     transparent, transparent 3px,
-    rgba(255,0,255,0.03) 3px, rgba(255,0,255,0.03) 4px
+    rgba(170,0,170,0.05) 3px, rgba(170,0,170,0.05) 4px
   );
   animation: scanlines 0.08s linear infinite;
 }
 .personality-brainrot::after {
   background:
-    radial-gradient(ellipse at 30% 50%, rgba(255,0,255,0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 70% 50%, rgba(0,255,255,0.06) 0%, transparent 45%);
+    radial-gradient(ellipse at 30% 50%, rgba(170,0,170,0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 50%, rgba(0,144,160,0.08) 0%, transparent 45%);
   animation: glitchJump 3s ease-in-out infinite, slowPulse 2s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   13. SLAY — Dark purple-black, hot pink glamour sparkles
+   8. SLAY — Light pink, glamour sparkles
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-slay {
-  background: linear-gradient(150deg, #200028 0%, #300040 60%, #200028 100%);
+  background: linear-gradient(150deg, #ffd8ec 0%, #ffe0f2 60%, #ffd8ec 100%);
 }
 .personality-slay::before {
-  background-image: radial-gradient(circle, rgba(255,20,147,0.50) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(192,0,100,0.26) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: starField 30s linear infinite, slowPulse 3.5s ease-in-out infinite alternate;
 }
 .personality-slay::after {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255,20,147,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(255,105,180,0.09) 0%, transparent 55%);
+    radial-gradient(ellipse at 50% 0%, rgba(192,0,100,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(220,80,140,0.07) 0%, transparent 55%);
   animation: slowPulse 5s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   10. VIBE — Dark lo-fi purple, chill floating stars
+   9. VIBE — Light lavender, chill dot pattern
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-vibe {
-  background: linear-gradient(160deg, #12122e 0%, #1c1e3e 60%, #12122e 100%);
+  background: linear-gradient(160deg, #e8e0ff 0%, #eeeaff 60%, #e8e0ff 100%);
 }
 .personality-vibe::before {
-  background-image: radial-gradient(circle, rgba(167,139,250,0.40) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(92,48,184,0.18) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: starField 45s linear infinite, slowPulse 7s ease-in-out infinite alternate;
 }
 .personality-vibe::after {
   background:
-    radial-gradient(ellipse at 30% 70%, rgba(167,139,250,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 30%, rgba(52,211,153,0.07) 0%, transparent 50%);
+    radial-gradient(ellipse at 30% 70%, rgba(92,48,184,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(16,160,112,0.06) 0%, transparent 50%);
   animation: slowPulse 9s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   16. TOUCH GRASS — Dark green, gentle nature dots
+   10. TOUCH GRASS — Light green, gentle nature dots
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-touch-grass {
-  background: linear-gradient(160deg, #081808 0%, #0e2810 60%, #081808 100%);
+  background: linear-gradient(160deg, #dff0d8 0%, #e8f5e0 60%, #dff0d8 100%);
 }
 .personality-touch-grass::before {
-  background-image: radial-gradient(circle, rgba(85,204,51,0.12) 2px, transparent 2px);
+  background-image: radial-gradient(circle, rgba(42,128,16,0.20) 2px, transparent 2px);
   background-size: 50px 50px;
   animation: floatUp 18s linear infinite;
 }
 .personality-touch-grass::after {
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(85,204,51,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 0%, rgba(136,255,68,0.06) 0%, transparent 45%);
+    radial-gradient(ellipse at 50% 100%, rgba(42,128,16,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(80,184,40,0.07) 0%, transparent 45%);
   animation: slowPulse 7s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   17. BASED — Near void, crimson oracle glow
+   11. BASED — Light warm rose, oracle glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-based {
-  background: linear-gradient(160deg, #140010 0%, #200018 60%, #140010 100%);
+  background: linear-gradient(160deg, #ffddd8 0%, #ffe6e0 60%, #ffddd8 100%);
 }
 .personality-based::before {
   background:
-    radial-gradient(ellipse at 50% 50%, rgba(204,34,0,0.10) 0%, transparent 60%);
+    radial-gradient(ellipse at 50% 50%, rgba(170,20,0,0.10) 0%, transparent 60%);
   animation: slowPulse 6s ease-in-out infinite alternate;
 }
 .personality-based::after {
-  background-image: radial-gradient(circle, rgba(204,34,0,0.20) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(170,20,0,0.16) 1px, transparent 1px);
   background-size: 100px 100px;
   animation: starField 90s linear infinite;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   12. MARIO — Dark amber, red/gold bouncing block grid
+   12. MARIO — Light cream, red/gold block grid
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-mario {
-  background: linear-gradient(150deg, #1c0c00 0%, #2c1400 60%, #1c0c00 100%);
+  background: linear-gradient(150deg, #ffe8c8 0%, #fff0d8 60%, #ffe8c8 100%);
 }
 .personality-mario::before {
   background-image:
-    linear-gradient(rgba(230,30,20,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(230,30,20,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(204,26,16,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(204,26,16,0.08) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: gridFlow 15s linear infinite;
 }
 .personality-mario::after {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(230,30,20,0.14) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 100%, rgba(245,166,35,0.09) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 0%, rgba(204,26,16,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(200,128,0,0.08) 0%, transparent 50%);
   animation: slowPulse 4s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   20. LUFFY — Deep navy, pirate red/blue ocean energy
+   13. LUFFY — Light warm, pirate red/blue energy
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-luffy {
-  background: linear-gradient(160deg, #160418 0%, #240530 60%, #160418 100%);
+  background: linear-gradient(160deg, #ffe8e4 0%, #fff0ee 60%, #ffe8e4 100%);
 }
 .personality-luffy::before {
   background:
-    radial-gradient(ellipse at 30% 70%, rgba(224,50,30,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 30%, rgba(26,136,204,0.08) 0%, transparent 50%);
+    radial-gradient(ellipse at 30% 70%, rgba(184,30,14,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(16,104,176,0.08) 0%, transparent 50%);
   animation: wavePush 7s ease-in-out infinite alternate;
 }
 .personality-luffy::after {
-  background-image: radial-gradient(circle, rgba(224,50,30,0.30) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(184,30,14,0.16) 1px, transparent 1px);
   background-size: 85px 85px;
   animation: starField 50s linear infinite, slowPulse 5s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   21. BUSINESS GUY — Dark startup green, golden chart glow
+   14. BUSINESS GUY — Light green, chart grid glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-business-guy {
-  background: linear-gradient(150deg, #0e1600 0%, #162400 60%, #0e1600 100%);
+  background: linear-gradient(150deg, #d8f8e8 0%, #e4ffe8 60%, #d8f8e8 100%);
 }
 .personality-business-guy::before {
   background-image:
-    linear-gradient(rgba(0,200,80,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,200,80,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(0,120,64,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,120,64,0.08) 1px, transparent 1px);
   background-size: 45px 45px;
   animation: gridFlow 20s linear infinite;
 }
 .personality-business-guy::after {
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(0,200,80,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.07) 0%, transparent 45%);
+    radial-gradient(ellipse at 50% 100%, rgba(0,120,64,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(160,128,0,0.07) 0%, transparent 45%);
   animation: slowPulse 6s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   22. PROFESSOR — Dark academic blue, subtle knowledge grid
+   15. PROFESSOR — Light blue, knowledge grid
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-professor {
-  background: linear-gradient(160deg, #061420 0%, #0c2030 60%, #061420 100%);
+  background: linear-gradient(160deg, #dce8ff 0%, #e4eeff 60%, #dce8ff 100%);
 }
 .personality-professor::before {
   background-image:
-    linear-gradient(rgba(58,123,213,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(58,123,213,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(26,85,204,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,85,204,0.07) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 .personality-professor::after {
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(58,123,213,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(122,184,245,0.07) 0%, transparent 50%);
+    radial-gradient(ellipse at 30% 20%, rgba(26,85,204,0.09) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(64,128,224,0.06) 0%, transparent 50%);
   animation: slowPulse 10s ease-in-out infinite alternate;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   22. GEO CAPTAIN — Deep ocean blue, maritime wave glow
+   16. GEO CAPTAIN — Light ocean, maritime wave glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-geo-captain {
-  background: linear-gradient(160deg, #061220 0%, #0c2038 60%, #061220 100%);
+  background: linear-gradient(160deg, #d4f0ff 0%, #dcf5ff 60%, #d4f0ff 100%);
 }
 .personality-geo-captain::before {
   background:
-    radial-gradient(ellipse at 50% 80%, rgba(0,140,200,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 20%, rgba(0,200,160,0.07) 0%, transparent 55%);
+    radial-gradient(ellipse at 50% 80%, rgba(0,104,170,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 20%, rgba(0,136,112,0.08) 0%, transparent 55%);
   animation: wavePush 10s ease-in-out infinite alternate;
 }
 .personality-geo-captain::after {
-  background-image: radial-gradient(circle, rgba(0,144,208,0.22) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0,104,170,0.16) 1px, transparent 1px);
   background-size: 90px 90px;
   animation: starField 65s linear infinite;
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   23. ANIMAL CROSSING — Soft dark green, gentle floating nature dots
+   17. ANIMAL CROSSING — Light seafoam, floating nature dots
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-animal-crossing {
-  background: linear-gradient(160deg, #061508 0%, #0e2a10 60%, #061508 100%);
+  background: linear-gradient(160deg, #d8f8e8 0%, #e4fff0 60%, #d8f8e8 100%);
 }
 .personality-animal-crossing::before {
-  background-image: radial-gradient(circle, rgba(80,200,130,0.12) 2px, transparent 2px);
+  background-image: radial-gradient(circle, rgba(32,128,80,0.20) 2px, transparent 2px);
   background-size: 55px 55px;
   animation: floatUp 20s linear infinite;
 }
 .personality-animal-crossing::after {
   background:
-    radial-gradient(ellipse at 30% 60%, rgba(80,200,130,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 40%, rgba(96,216,192,0.08) 0%, transparent 50%);
+    radial-gradient(ellipse at 30% 60%, rgba(32,128,80,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 40%, rgba(40,168,136,0.08) 0%, transparent 50%);
   animation: slowPulse 8s ease-in-out infinite alternate;
 }
