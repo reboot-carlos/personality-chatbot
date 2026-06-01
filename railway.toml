@@ -1,4 +1,6 @@
+[build]
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
+
 [deploy]
-# start.sh is for local use only — it requires a Docker daemon which Railway
-# does not provide. Railway deploys using docker-compose.yml natively instead.
-startCommand = ""
+healthcheckPath = "/health"
