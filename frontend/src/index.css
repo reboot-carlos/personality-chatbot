@@ -75,7 +75,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    3. SIGMA — Dark navy, lone-wolf stars, cold glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-sigma {
-  background: linear-gradient(160deg, #08080f 0%, #0f0f1a 60%, #08080f 100%);
+  background: linear-gradient(160deg, #131330 0%, #1c1c38 60%, #131330 100%);
 }
 .personality-sigma::before {
   background-image: radial-gradient(circle, rgba(120,120,220,0.45) 1px, transparent 1px);
@@ -92,7 +92,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    4. GIGACHAD — Dark gold, divine radial crown
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-gigachad {
-  background: linear-gradient(150deg, #0a0800 0%, #150f00 60%, #0a0800 100%);
+  background: linear-gradient(150deg, #1c1600 0%, #261e00 60%, #1c1600 100%);
 }
 .personality-gigachad::before {
   background: conic-gradient(
@@ -116,7 +116,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    5. DELULU — Dark purple, pink sparkle dots
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-delulu {
-  background: linear-gradient(150deg, #150018 0%, #200025 60%, #150018 100%);
+  background: linear-gradient(150deg, #28003a 0%, #360048 60%, #28003a 100%);
 }
 .personality-delulu::before {
   background-image: radial-gradient(circle, rgba(255,105,180,0.55) 1px, transparent 1px);
@@ -134,7 +134,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    6. RIZZ LORD — Deep purple, smooth aurora waves
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-rizz-lord {
-  background: linear-gradient(150deg, #0d0018 0%, #180028 60%, #0d0018 100%);
+  background: linear-gradient(150deg, #20002e 0%, #2e0050 60%, #20002e 100%);
 }
 .personality-rizz-lord::before {
   background:
@@ -168,7 +168,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    9. BRAINROT — Near-black, RGB scanlines + glitch pulse
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-brainrot {
-  background: #020202;
+  background: #0e0618;
 }
 .personality-brainrot::before {
   background-image: repeating-linear-gradient(
@@ -189,7 +189,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    13. SLAY — Dark purple-black, hot pink glamour sparkles
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-slay {
-  background: linear-gradient(150deg, #0f0012 0%, #1a0020 60%, #0f0012 100%);
+  background: linear-gradient(150deg, #200028 0%, #300040 60%, #200028 100%);
 }
 .personality-slay::before {
   background-image: radial-gradient(circle, rgba(255,20,147,0.50) 1px, transparent 1px);
@@ -207,7 +207,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    10. VIBE — Dark lo-fi purple, chill floating stars
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-vibe {
-  background: linear-gradient(160deg, #080818 0%, #0f1025 60%, #080818 100%);
+  background: linear-gradient(160deg, #12122e 0%, #1c1e3e 60%, #12122e 100%);
 }
 .personality-vibe::before {
   background-image: radial-gradient(circle, rgba(167,139,250,0.40) 1px, transparent 1px);
@@ -225,7 +225,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    16. TOUCH GRASS — Dark green, gentle nature dots
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-touch-grass {
-  background: linear-gradient(160deg, #030a03 0%, #061506 60%, #030a03 100%);
+  background: linear-gradient(160deg, #081808 0%, #0e2810 60%, #081808 100%);
 }
 .personality-touch-grass::before {
   background-image: radial-gradient(circle, rgba(85,204,51,0.12) 2px, transparent 2px);
@@ -243,7 +243,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    17. BASED — Near void, crimson oracle glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-based {
-  background: linear-gradient(160deg, #060005 0%, #0d000a 60%, #060005 100%);
+  background: linear-gradient(160deg, #140010 0%, #200018 60%, #140010 100%);
 }
 .personality-based::before {
   background:
@@ -260,7 +260,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    12. MARIO — Dark amber, red/gold bouncing block grid
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-mario {
-  background: linear-gradient(150deg, #0a0400 0%, #180800 60%, #0a0400 100%);
+  background: linear-gradient(150deg, #1c0c00 0%, #2c1400 60%, #1c0c00 100%);
 }
 .personality-mario::before {
   background-image:
@@ -280,7 +280,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    20. LUFFY — Deep navy, pirate red/blue ocean energy
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-luffy {
-  background: linear-gradient(160deg, #08010a 0%, #150218 60%, #08010a 100%);
+  background: linear-gradient(160deg, #160418 0%, #240530 60%, #160418 100%);
 }
 .personality-luffy::before {
   background:
@@ -298,7 +298,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    21. BUSINESS GUY — Dark startup green, golden chart glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-business-guy {
-  background: linear-gradient(150deg, #050800 0%, #0a1200 60%, #050800 100%);
+  background: linear-gradient(150deg, #0e1600 0%, #162400 60%, #0e1600 100%);
 }
 .personality-business-guy::before {
   background-image:
@@ -318,7 +318,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    22. PROFESSOR — Dark academic blue, subtle knowledge grid
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-professor {
-  background: linear-gradient(160deg, #01080f 0%, #021018 60%, #01080f 100%);
+  background: linear-gradient(160deg, #061420 0%, #0c2030 60%, #061420 100%);
 }
 .personality-professor::before {
   background-image:
@@ -337,7 +337,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    22. GEO CAPTAIN — Deep ocean blue, maritime wave glow
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-geo-captain {
-  background: linear-gradient(160deg, #010812 0%, #021020 60%, #010812 100%);
+  background: linear-gradient(160deg, #061220 0%, #0c2038 60%, #061220 100%);
 }
 .personality-geo-captain::before {
   background:
@@ -355,7 +355,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
    23. ANIMAL CROSSING — Soft dark green, gentle floating nature dots
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-animal-crossing {
-  background: linear-gradient(160deg, #020a05 0%, #051808 60%, #020a05 100%);
+  background: linear-gradient(160deg, #061508 0%, #0e2a10 60%, #061508 100%);
 }
 .personality-animal-crossing::before {
   background-image: radial-gradient(circle, rgba(80,200,130,0.12) 2px, transparent 2px);

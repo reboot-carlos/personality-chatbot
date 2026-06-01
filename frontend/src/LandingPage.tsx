@@ -196,7 +196,7 @@ function Scene() {
 
 export default function LandingPage({ onEnter }: { onEnter: () => void }) {
   return (
-    <div className="relative w-screen h-screen overflow-hidden" style={{ background: '#020209' }}>
+    <div className="relative w-screen h-screen overflow-hidden" style={{ background: '#0d0a1e' }}>
 
       {/* ── WebGL canvas ── */}
       <div className="absolute inset-0">
@@ -243,7 +243,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
         >
           <p
             className="text-xs tracking-[0.38em] uppercase font-medium select-none"
-            style={{ color: 'rgba(190,170,255,0.45)', fontFamily: 'Inter, system-ui' }}
+            style={{ color: 'rgba(210,195,255,0.75)', fontFamily: 'Inter, system-ui' }}
           >
             Persona
           </p>
@@ -252,7 +252,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
               <motion.span
                 key={p.id}
                 initial={{ opacity: 0, scale: 0.4 }}
-                animate={{ opacity: 0.65, scale: 1 }}
+                animate={{ opacity: 0.9, scale: 1 }}
                 whileHover={{ opacity: 1, scale: 1.15 }}
                 transition={{ delay: 0.5 + i * 0.07, type: 'spring', stiffness: 380, damping: 18 }}
                 className="text-xl cursor-default leading-none"
@@ -266,7 +266,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.0 }}
               className="text-xs ml-0.5"
-              style={{ color: 'rgba(160,140,220,0.3)', fontFamily: 'Inter, system-ui' }}
+              style={{ color: 'rgba(190,175,255,0.65)', fontFamily: 'Inter, system-ui' }}
             >
               +{PERSONALITY_LIST.length - 6}
             </motion.span>
@@ -281,7 +281,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
             animate={{ opacity: 1, letterSpacing: '0.42em' }}
             transition={{ duration: 1.1, delay: 0.65 }}
             className="text-xs font-semibold uppercase mb-7"
-            style={{ color: 'rgba(160,120,255,0.55)', fontFamily: 'Inter, system-ui' }}
+            style={{ color: 'rgba(190,155,255,0.85)', fontFamily: 'Inter, system-ui' }}
           >
             Chatbot IA génératif
           </motion.p>
@@ -317,7 +317,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 1.05 }}
             className="mt-7 text-base leading-relaxed max-w-xs"
-            style={{ color: 'rgba(200,190,235,0.38)', fontFamily: 'Inter, system-ui' }}
+            style={{ color: 'rgba(220,210,255,0.75)', fontFamily: 'Inter, system-ui' }}
           >
             {PERSONALITY_LIST.length} styles · {ROLE_LIST.length} rôles agents
             <br />
@@ -384,7 +384,7 @@ export default function LandingPage({ onEnter }: { onEnter: () => void }) {
               style={{
                 background: `${p.theme.primary}0d`,
                 border: `1px solid ${p.theme.primary}25`,
-                opacity: 0.75,
+                opacity: 1,
               }}
             >
               <span className="text-sm leading-none">{p.avatar}</span>

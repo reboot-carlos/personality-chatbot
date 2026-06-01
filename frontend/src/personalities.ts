@@ -63,7 +63,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#e0e0ff',
       fontFamily: "'Rajdhani', sans-serif",
       glowColor: '#6060b0',
-      sidebarBg: 'rgba(8,8,15,0.98)',
+      sidebarBg: 'rgba(22,22,48,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, y: 10 },
@@ -100,7 +100,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#0a0800',
       fontFamily: "'Cinzel', Georgia, serif",
       glowColor: '#ffd700',
-      sidebarBg: 'rgba(10,8,0,0.98)',
+      sidebarBg: 'rgba(30,24,6,0.97)',
     },
     msgVariants: {
       hidden: { scale: 0.88, opacity: 0 },
@@ -137,7 +137,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Fredoka One', cursive",
       glowColor: '#ff69b4',
-      sidebarBg: 'rgba(21,0,24,0.97)',
+      sidebarBg: 'rgba(45,8,52,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, scale: 0.9, y: 8 },
@@ -174,7 +174,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#f8f0ff',
       fontFamily: "'Cormorant Garamond', Georgia, serif",
       glowColor: '#9030cc',
-      sidebarBg: 'rgba(13,0,24,0.98)',
+      sidebarBg: 'rgba(32,8,52,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, x: 14 },
@@ -248,7 +248,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'VT323', monospace",
       glowColor: '#ff00ff',
-      sidebarBg: 'rgba(2,2,2,0.98)',
+      sidebarBg: 'rgba(20,6,28,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, x: 10 },
@@ -285,7 +285,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Fredoka One', cursive",
       glowColor: '#ff1493',
-      sidebarBg: 'rgba(15,0,18,0.98)',
+      sidebarBg: 'rgba(38,6,45,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, y: -12 },
@@ -322,7 +322,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#f5f3ff',
       fontFamily: "'Exo 2', sans-serif",
       glowColor: '#7c3aed',
-      sidebarBg: 'rgba(8,8,24,0.98)',
+      sidebarBg: 'rgba(20,20,52,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, y: 16 },
@@ -359,7 +359,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#f0fff0',
       fontFamily: "'Lora', Georgia, serif",
       glowColor: '#44aa22',
-      sidebarBg: 'rgba(3,10,3,0.98)',
+      sidebarBg: 'rgba(10,30,10,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, y: 10, scale: 0.97 },
@@ -396,7 +396,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffe8e0',
       fontFamily: "'Special Elite', cursive",
       glowColor: '#991100',
-      sidebarBg: 'rgba(6,0,5,0.98)',
+      sidebarBg: 'rgba(24,6,20,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, scale: 0.95 },
@@ -433,7 +433,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Fredoka One', cursive",
       glowColor: '#e61e14',
-      sidebarBg: 'rgba(10,4,0,0.98)',
+      sidebarBg: 'rgba(30,14,6,0.97)',
     },
     msgVariants: {
       hidden: { y: -14, opacity: 0, scale: 0.93 },
@@ -470,7 +470,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Exo 2', sans-serif",
       glowColor: '#cc2010',
-      sidebarBg: 'rgba(8,1,10,0.98)',
+      sidebarBg: 'rgba(24,6,30,0.97)',
     },
     msgVariants: {
       hidden: { x: 20, opacity: 0 },
@@ -507,7 +507,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Exo 2', sans-serif",
       glowColor: '#00a840',
-      sidebarBg: 'rgba(5,8,0,0.98)',
+      sidebarBg: 'rgba(14,24,6,0.97)',
     },
     msgVariants: {
       hidden: { y: -12, opacity: 0, scale: 0.94 },
@@ -544,7 +544,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Lora', Georgia, serif",
       glowColor: '#2255aa',
-      sidebarBg: 'rgba(1,8,15,0.98)',
+      sidebarBg: 'rgba(6,22,44,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, y: 12 },
@@ -581,7 +581,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#ffffff',
       fontFamily: "'Cinzel', Georgia, serif",
       glowColor: '#006699',
-      sidebarBg: 'rgba(1,8,18,0.98)',
+      sidebarBg: 'rgba(6,22,48,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, x: -14 },
@@ -618,7 +618,7 @@ export const PERSONALITIES: PersonalityConfig[] = [
       buttonText: '#f0fff8',
       fontFamily: "'Fredoka One', cursive",
       glowColor: '#30a060',
-      sidebarBg: 'rgba(2,10,5,0.98)',
+      sidebarBg: 'rgba(8,28,14,0.97)',
     },
     msgVariants: {
       hidden: { opacity: 0, y: 8, scale: 0.97 },
