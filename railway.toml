@@ -1,7 +1,4 @@
-[build]
-builder = "dockerfile"
-
 [deploy]
-# start.sh is for local use only (requires Docker daemon).
-# Railway deploys each service via its own Dockerfile instead.
+# start.sh is for local use only — it requires a Docker daemon which Railway
+# does not provide. Railway deploys using docker-compose.yml natively instead.
 startCommand = ""
