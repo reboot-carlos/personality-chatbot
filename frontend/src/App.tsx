@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import type { ChatMessage, PersonalityConfig } from './types'
 import { PERSONALITIES } from './personalities'
 
@@ -88,21 +90,56 @@ function MessageBubble({
           boxShadow: isUser ? `0 0 22px ${theme.glowColor}22` : 'none',
         }}
       >
-        <p
-          className="text-sm leading-relaxed whitespace-pre-wrap break-words"
-          style={{ fontFamily: theme.fontFamily }}
-        >
-          {message.content}
-          {isStreaming && isLast && !isUser && (
-            <motion.span
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 0.75, repeat: Infinity }}
-              style={{ color: theme.primary }}
+        {isUser ? (
+          <p className="text-sm leading-relaxed whitespace-pre-wrap break-words" style={{ fontFamily: theme.fontFamily }}>
+            {message.content}
+          </p>
+        ) : (
+          <div className="text-sm leading-relaxed break-words" style={{ fontFamily: theme.fontFamily }}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ children }) => <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>,
+                strong: ({ children }) => <strong className="font-bold" style={{ color: theme.primary }}>{children}</strong>,
+                em: ({ children }) => <em className="italic">{children}</em>,
+                ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-0.5">{children}</ul>,
+                ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-0.5">{children}</ol>,
+                li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+                h1: ({ children }) => <h1 className="text-base font-bold mb-1.5" style={{ color: theme.primary }}>{children}</h1>,
+                h2: ({ children }) => <h2 className="text-sm font-bold mb-1.5" style={{ color: theme.primary }}>{children}</h2>,
+                h3: ({ children }) => <h3 className="text-sm font-semibold mb-1" style={{ color: theme.primary }}>{children}</h3>,
+                code: ({ className, children, ...props }: any) => {
+                  const isBlock = !!className
+                  return isBlock ? (
+                    <pre className="rounded-lg p-3 my-2 text-xs overflow-x-auto" style={{ background: `${theme.primary}18` }}>
+                      <code className={className} style={{ color: theme.text }}>{children}</code>
+                    </pre>
+                  ) : (
+                    <code className="px-1.5 py-0.5 rounded text-xs font-mono" style={{ background: `${theme.primary}22`, color: theme.primary }}>{children}</code>
+                  )
+                },
+                blockquote: ({ children }) => (
+                  <blockquote className="border-l-2 pl-3 my-2 italic opacity-80" style={{ borderColor: theme.primary }}>{children}</blockquote>
+                ),
+                a: ({ href, children }) => (
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: theme.primary }}>{children}</a>
+                ),
+                hr: () => <hr className="my-2" style={{ borderColor: theme.border }} />,
+              }}
             >
-              ▊
-            </motion.span>
-          )}
-        </p>
+              {message.content}
+            </ReactMarkdown>
+            {isStreaming && isLast && (
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.75, repeat: Infinity }}
+                style={{ color: theme.primary }}
+              >
+                ▊
+              </motion.span>
+            )}
+          </div>
+        )}
       </div>
     </motion.div>
   )
