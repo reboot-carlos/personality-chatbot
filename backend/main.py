@@ -5,6 +5,7 @@ import os
 from typing import AsyncGenerator
 
 import anthropic
+import httpx
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -19,6 +20,30 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+GEO_API_BASE = "https://rawcdn.githack.com/kamikazechaser/administrative-divisions-db/master/api"
+BUSINESS_API_URL = "https://itsthisforthat.com/api.php?text"
+
+GEO_TOOLS = [
+    {
+        "name": "get_administrative_divisions",
+        "description": (
+            "Retrieve official administrative divisions (regions, provinces, states) of a country "
+            "using its ISO 3166-1 alpha-2 code. Call this when the user asks about a specific "
+            "country's geography, regions, provinces, or administrative structure."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "country_code": {
+                    "type": "string",
+                    "description": "ISO 3166-1 alpha-2 country code, e.g. 'FR' for France, 'BR' for Brazil, 'JP' for Japan",
+                }
+            },
+            "required": ["country_code"],
+        },
+    }
+]
 
 PERSONAS: dict[str, str] = {
     "skibidi": (
@@ -132,6 +157,54 @@ PERSONAS: dict[str, str] = {
         "pour absolument tout : 'ENORME W no cap', 'W certifie fr fr', 'c'est le feu absolu'. "
         "Rien n'est jamais un L dans ton monde. Tout le monde est un winner."
     ),
+    "mario": (
+        "Tu es Mario, le plombier legendaire du Royaume Champignon. Tu parles avec enthousiasme debordant, "
+        "tu melanges 'Wahoo!', 'Mamma mia!', 'Let-s-a go!' avec du francais Gen Z naturel. Tu references "
+        "tes aventures, Bowser, les pieces d-or, les champignons magiques. Tu es optimiste a fond, jamais "
+        "decourage. Chaque obstacle est un niveau a passer. Tu utilises 'c-est le feu', 'no cap', 'wesh' "
+        "avec un enthousiasme de plombier cosmique. Tes reponses sont energiques et pleines de bonne humeur."
+    ),
+    "luffy": (
+        "Tu es Monkey D. Luffy, futur Roi des Pirates. Tu parles simplement, directement, avec une conviction "
+        "absolue. Tu parles de nakama (amis), de liberte, de viande, de ton reve de devenir Roi des Pirates. "
+        "Tu melanges francais simple et direct avec 'shishishi' (ton rire) et des references One Piece. "
+        "Tu ne comprends pas les choses trop compliquees mais tu as une sagesse profonde sur l-amitie et "
+        "la liberte. Tu utilises 'wesh c-est simple', 'no cap la liberte c-est tout', 'mes nakama c-est le feu'."
+    ),
+    "business_guy": (
+        "Tu es Le Mec des Idees Business, genie entrepreneurial francais qui pitche des startups absurdes "
+        "mais convaincantes. Pour chaque message, tu developpes et pitches le concept d'idee business "
+        "qui t'est fourni dans le contexte, en expliquant pourquoi c'est revolutionnaire, quel est le "
+        "marche cible, et comment lever des fonds. Tu utilises le jargon startup : 'disruption', 'scalable', "
+        "'pivot', 'B2B', 'SaaS', 'product-market fit', 'MVP', 'ARR'. Tu es enthousiaste, legerement fou, "
+        "mais convaincu que chaque idee va changer le monde. Tu parles en franglais naturel avec l'energie "
+        "d'un TED Talk rate mais inspirant. Si aucune idee n'est fournie, tu en inventes une spontanement."
+    ),
+    "professor": (
+        "Tu es un Professeur bienveillant expert en methode Socratique. Tu REFUSES absolument de donner la "
+        "reponse directe aux devoirs et problemes scolaires. Tu guides uniquement par des questions : "
+        "Qu-est-ce que tu penses qui se passe ici, Comment pourrais-tu decomposer ce probleme, "
+        "Qu-est-ce que tu sais deja sur ce sujet. Tu expliques les concepts avec des analogies claires "
+        "quand necessaire. Tu encourages et felicites les progres. Tu es patient, jamais condescendant. "
+        "Ton but est que l-eleve comprenne vraiment par lui-meme, pas qu-il copie."
+    ),
+    "geo_captain": (
+        "Tu es le Capitaine des Mers, explorateur legendaire et geographe aventurier qui a navigue chaque "
+        "mer et visite chaque continent. Tu enseignes la geographie comme une aventure epique : capitales, "
+        "cultures, reliefs, fleuves, tout devient une histoire de voyage et de decouverte. Tu utilises des "
+        "metaphores nautiques, tu decris les lieux avec vivacite et passion. Tu poses des questions pour "
+        "engager l-exploration. Tu parles en francais avec l-enthousiasme d-un aventurier qui a tout vu. "
+        "Quand l-utilisateur demande des informations sur les divisions administratives d-un pays, utilise "
+        "l-outil get_administrative_divisions pour obtenir les donnees officielles et precisees."
+    ),
+    "animal_crossing": (
+        "Tu es le Philosophe de l-Ile, sage bienveillant inspire de l-atmosphere douce d-Animal Crossing. "
+        "Tu aides les gens a comprendre la vie, les relations humaines, la communication et comment mieux "
+        "vivre. Tu parles avec douceur et profondeur : le present est un cadeau, les petites joies comptent, "
+        "les conflits se resolvent avec patience et empathie. Tu utilises des analogies de jardinage, de "
+        "saisons, de voisins pour expliquer les grandes questions existentielles. Tu es calme, positif, "
+        "jamais dans la precipitation. En francais, toujours bienveillant."
+    ),
 }
 
 
@@ -143,6 +216,87 @@ class MessageIn(BaseModel):
 class ChatRequest(BaseModel):
     messages: list[MessageIn]
     character: str
+    role: str | None = None
+
+
+async def fetch_geo_divisions(country_code: str) -> str:
+    url = f"{GEO_API_BASE}/{country_code.upper()}.json"
+    async with httpx.AsyncClient(timeout=8.0) as client:
+        try:
+            resp = await client.get(url)
+            if resp.status_code == 200:
+                data = resp.json()
+                if isinstance(data, list):
+                    data = data[:80]
+                return json.dumps(data, ensure_ascii=False)
+        except Exception:
+            pass
+    return f"Aucune donnee disponible pour le code pays '{country_code}'"
+
+
+async def fetch_business_idea() -> str:
+    async with httpx.AsyncClient(timeout=6.0) as client:
+        try:
+            resp = await client.get(BUSINESS_API_URL)
+            if resp.status_code == 200 and resp.text.strip():
+                return resp.text.strip()
+        except Exception:
+            pass
+    return "une app de rencontres pour vegans qui font du yoga"
+
+
+async def _geo_tool_stream(
+    client: anthropic.AsyncAnthropic,
+    system_prompt: str,
+    messages: list[dict],
+) -> AsyncGenerator[str, None]:
+    try:
+        response = await client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=1024,
+            system=system_prompt,
+            tools=GEO_TOOLS,
+            messages=messages,
+        )
+
+        if response.stop_reason == "tool_use":
+            tool_block = next((b for b in response.content if b.type == "tool_use"), None)
+            if tool_block:
+                country_code = tool_block.input.get("country_code", "")
+                geo_data = await fetch_geo_divisions(country_code)
+
+                second_messages = messages + [
+                    {"role": "assistant", "content": response.content},
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "tool_result",
+                                "tool_use_id": tool_block.id,
+                                "content": geo_data,
+                            }
+                        ],
+                    },
+                ]
+                async with client.messages.stream(
+                    model="claude-haiku-4-5-20251001",
+                    max_tokens=1024,
+                    system=system_prompt,
+                    tools=GEO_TOOLS,
+                    messages=second_messages,
+                ) as stream:
+                    async for text in stream.text_stream:
+                        yield f"data: {json.dumps({'content': text})}\n\n"
+                return
+
+        for block in response.content:
+            if hasattr(block, "text"):
+                yield f"data: {json.dumps({'content': block.text})}\n\n"
+
+    except Exception as exc:
+        yield f"data: {json.dumps({'error': str(exc)})}\n\n"
+    finally:
+        yield "data: [DONE]\n\n"
 
 
 async def stream_response(request: ChatRequest) -> AsyncGenerator[str, None]:
@@ -152,15 +306,35 @@ async def stream_response(request: ChatRequest) -> AsyncGenerator[str, None]:
         yield "data: [DONE]\n\n"
         return
 
-    system_prompt = PERSONAS.get(request.character, PERSONAS["skibidi"])
+    if request.role and request.role in PERSONAS:
+        role_prompt = PERSONAS[request.role]
+        style_prompt = PERSONAS.get(request.character, PERSONAS["skibidi"])
+        system_prompt = (
+            role_prompt
+            + "\n\nIMPORTANT — Style de communication obligatoire : "
+            + style_prompt
+        )
+    else:
+        system_prompt = PERSONAS.get(request.character, PERSONAS["skibidi"])
+
+    if request.character == "business_guy":
+        idea = await fetch_business_idea()
+        system_prompt += f"\n\nIDEE A PITCHER dans cette reponse : {idea}"
+
     client = anthropic.AsyncAnthropic(api_key=api_key)
+    messages = [{"role": m.role, "content": m.content} for m in request.messages]
+
+    if request.role == "geo_captain":
+        async for chunk in _geo_tool_stream(client, system_prompt, messages):
+            yield chunk
+        return
 
     try:
         async with client.messages.stream(
             model="claude-haiku-4-5-20251001",
             max_tokens=1024,
             system=system_prompt,
-            messages=[{"role": m.role, "content": m.content} for m in request.messages],
+            messages=messages,
         ) as stream:
             async for text in stream.text_stream:
                 yield f"data: {json.dumps({'content': text})}\n\n"

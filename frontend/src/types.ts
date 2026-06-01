@@ -27,6 +27,7 @@ export interface PersonalityTheme {
 
 export interface PersonalityConfig {
   id: string
+  category: 'personality' | 'role'
   name: string
   avatar: string
   tagline: string

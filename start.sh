@@ -18,14 +18,14 @@ if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   exit 1
 fi
 
-printf '\n\033[1;36m  ╔══════════════════════════════════════╗\033[0m\n'
-printf '\033[1;36m  ║      Personality Chatbot — Boot      ║\033[0m\n'
-printf '\033[1;36m  ╚══════════════════════════════════════╝\033[0m\n\n'
+printf '\n\033[1;35m  ╔══════════════════════════════════════╗\033[0m\n'
+printf '\033[1;35m  ║           Persona — Boot             ║\033[0m\n'
+printf '\033[1;35m  ╚══════════════════════════════════════╝\033[0m\n\n'
 
 docker compose up --build -d
 
-printf '\n  \033[1;32m✓ Services started\033[0m\n\n'
-printf '  Frontend  →  \033[4mhttp://localhost:3000\033[0m\n'
-printf '  Backend   →  \033[4mhttp://localhost:8000\033[0m\n\n'
-printf '  Follow logs :  docker compose logs -f\n'
-printf '  Stop        :  docker compose down\n\n'
+printf '\n  \033[1;32m✓ Services démarrés\033[0m\n\n'
+printf '  Landing page  →  \033[4mhttp://localhost:3000\033[0m\n'
+printf '  Backend API   →  \033[4mhttp://localhost:8000\033[0m\n\n'
+printf '  Logs          :  docker compose logs -f\n'
+printf '  Arrêt         :  docker compose down\n\n'

@@ -56,27 +56,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 @keyframes wavePush { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   1. SKIBIDI — Radioactive toilet green, moving grid
-   ════════════════════════════════════════════════════════════════════════════ */
-.personality-skibidi {
-  background: linear-gradient(135deg, #020a02 0%, #051505 60%, #020a02 100%);
-}
-.personality-skibidi::before {
-  background-image:
-    linear-gradient(rgba(57,255,20,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57,255,20,0.045) 1px, transparent 1px);
-  background-size: 46px 46px;
-  animation: gridFlow 12s linear infinite;
-}
-.personality-skibidi::after {
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(57,255,20,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(255,68,0,0.07) 0%, transparent 50%);
-  animation: slowPulse 4s ease-in-out infinite alternate;
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   2. NPC — Flat beige with diamond tile pattern
+   1. NPC — Flat beige with diamond tile pattern
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-npc {
   background: linear-gradient(160deg, #c8bda8 0%, #b8a990 60%, #c8bda8 100%);
@@ -151,25 +131,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   6. OHIO — Eerie lime-green fog, unsettling warp
-   ════════════════════════════════════════════════════════════════════════════ */
-.personality-ohio {
-  background: linear-gradient(180deg, #030800 0%, #060e00 60%, #030800 100%);
-}
-.personality-ohio::before {
-  background:
-    radial-gradient(ellipse at 30% 70%, rgba(136,255,0,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 30%, rgba(0,255,136,0.07) 0%, transparent 55%);
-  animation: wavePush 9s ease-in-out infinite alternate;
-}
-.personality-ohio::after {
-  background-image: radial-gradient(circle, rgba(136,255,0,0.20) 1px, transparent 1px);
-  background-size: 110px 110px;
-  animation: starField 80s linear infinite, slowPulse 7s ease-in-out infinite alternate;
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   7. RIZZ LORD — Deep purple, smooth aurora waves
+   6. RIZZ LORD — Deep purple, smooth aurora waves
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-rizz-lord {
   background: linear-gradient(150deg, #0d0018 0%, #180028 60%, #0d0018 100%);
@@ -203,56 +165,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   9. MEWING — Dark stone, near-silent minimal pulse
-   ════════════════════════════════════════════════════════════════════════════ */
-.personality-mewing {
-  background: linear-gradient(160deg, #141414 0%, #1c1c1c 60%, #141414 100%);
-}
-.personality-mewing::before {
-  background-image: radial-gradient(circle, rgba(180,180,180,0.08) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.personality-mewing::after {
-  background: radial-gradient(ellipse at 50% 50%, rgba(150,150,150,0.05) 0%, transparent 70%);
-  animation: slowPulse 12s ease-in-out infinite alternate;
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   10. GRINDSET — Near-black, intense red fire particles
-   ════════════════════════════════════════════════════════════════════════════ */
-.personality-grindset {
-  background: linear-gradient(160deg, #0a0000 0%, #150000 60%, #0a0000 100%);
-}
-.personality-grindset::before {
-  background-image: radial-gradient(circle, rgba(255,34,0,0.45) 1px, transparent 1px);
-  background-size: 55px 55px;
-  animation: floatUp 8s linear infinite, slowPulse 3s ease-in-out infinite alternate;
-}
-.personality-grindset::after {
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(255,34,0,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 0%, rgba(255,102,0,0.08) 0%, transparent 50%);
-  animation: slowPulse 4s ease-in-out infinite alternate;
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   11. RATIO KING — Twitter blue/white, network dot lines
-   ════════════════════════════════════════════════════════════════════════════ */
-.personality-ratio-king {
-  background: linear-gradient(160deg, #e8f4fd 0%, #d8ecf8 60%, #e8f4fd 100%);
-}
-.personality-ratio-king::before {
-  background-image: radial-gradient(circle, rgba(29,155,240,0.10) 1px, transparent 1px);
-  background-size: 38px 38px;
-}
-.personality-ratio-king::after {
-  background:
-    radial-gradient(ellipse at 100% 0%, rgba(29,155,240,0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 0% 100%, rgba(0,112,208,0.06) 0%, transparent 45%);
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   12. BRAINROT — Near-black, RGB scanlines + glitch pulse
+   9. BRAINROT — Near-black, RGB scanlines + glitch pulse
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-brainrot {
   background: #020202;
@@ -291,26 +204,7 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   14. NO CAP — Dark academic blue, subtle knowledge grid
-   ════════════════════════════════════════════════════════════════════════════ */
-.personality-nocap {
-  background: linear-gradient(160deg, #000a18 0%, #001020 60%, #000a18 100%);
-}
-.personality-nocap::before {
-  background-image:
-    linear-gradient(rgba(68,136,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(68,136,255,0.04) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-.personality-nocap::after {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(68,136,255,0.09) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(136,170,255,0.06) 0%, transparent 55%);
-  animation: slowPulse 8s ease-in-out infinite alternate;
-}
-
-/* ════════════════════════════════════════════════════════════════════════════
-   15. VIBE — Dark lo-fi purple, chill floating stars
+   10. VIBE — Dark lo-fi purple, chill floating stars
    ════════════════════════════════════════════════════════════════════════════ */
 .personality-vibe {
   background: linear-gradient(160deg, #080818 0%, #0f1025 60%, #080818 100%);
@@ -363,24 +257,114 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   18. CERTIFIED W — Dark trophy room, golden particles
+   12. MARIO — Dark amber, red/gold bouncing block grid
    ════════════════════════════════════════════════════════════════════════════ */
-.personality-certified-w {
-  background: linear-gradient(150deg, #080600 0%, #120e00 60%, #080600 100%);
+.personality-mario {
+  background: linear-gradient(150deg, #0a0400 0%, #180800 60%, #0a0400 100%);
 }
-.personality-certified-w::before {
-  background: conic-gradient(
-    from 0deg at 50% 50%,
-    rgba(255,204,0,0.06) 0deg, transparent 50deg,
-    rgba(255,204,0,0.04) 100deg, transparent 150deg,
-    rgba(255,153,0,0.06) 200deg, transparent 250deg,
-    rgba(255,204,0,0.04) 300deg, transparent 350deg,
-    rgba(255,204,0,0.06) 360deg
-  );
-  animation: sunRays 25s linear infinite;
+.personality-mario::before {
+  background-image:
+    linear-gradient(rgba(230,30,20,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230,30,20,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridFlow 15s linear infinite;
 }
-.personality-certified-w::after {
-  background-image: radial-gradient(circle, rgba(255,204,0,0.50) 1.5px, transparent 1.5px);
-  background-size: 70px 70px;
-  animation: starField 40s linear infinite, slowPulse 4s ease-in-out infinite alternate;
+.personality-mario::after {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(230,30,20,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(245,166,35,0.09) 0%, transparent 50%);
+  animation: slowPulse 4s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   20. LUFFY — Deep navy, pirate red/blue ocean energy
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-luffy {
+  background: linear-gradient(160deg, #08010a 0%, #150218 60%, #08010a 100%);
+}
+.personality-luffy::before {
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(224,50,30,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(26,136,204,0.08) 0%, transparent 50%);
+  animation: wavePush 7s ease-in-out infinite alternate;
+}
+.personality-luffy::after {
+  background-image: radial-gradient(circle, rgba(224,50,30,0.30) 1px, transparent 1px);
+  background-size: 85px 85px;
+  animation: starField 50s linear infinite, slowPulse 5s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   21. BUSINESS GUY — Dark startup green, golden chart glow
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-business-guy {
+  background: linear-gradient(150deg, #050800 0%, #0a1200 60%, #050800 100%);
+}
+.personality-business-guy::before {
+  background-image:
+    linear-gradient(rgba(0,200,80,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,80,0.04) 1px, transparent 1px);
+  background-size: 45px 45px;
+  animation: gridFlow 20s linear infinite;
+}
+.personality-business-guy::after {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(0,200,80,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.07) 0%, transparent 45%);
+  animation: slowPulse 6s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   22. PROFESSOR — Dark academic blue, subtle knowledge grid
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-professor {
+  background: linear-gradient(160deg, #01080f 0%, #021018 60%, #01080f 100%);
+}
+.personality-professor::before {
+  background-image:
+    linear-gradient(rgba(58,123,213,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58,123,213,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.personality-professor::after {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(58,123,213,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(122,184,245,0.07) 0%, transparent 50%);
+  animation: slowPulse 10s ease-in-out infinite alternate;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   22. GEO CAPTAIN — Deep ocean blue, maritime wave glow
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-geo-captain {
+  background: linear-gradient(160deg, #010812 0%, #021020 60%, #010812 100%);
+}
+.personality-geo-captain::before {
+  background:
+    radial-gradient(ellipse at 50% 80%, rgba(0,140,200,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 20%, rgba(0,200,160,0.07) 0%, transparent 55%);
+  animation: wavePush 10s ease-in-out infinite alternate;
+}
+.personality-geo-captain::after {
+  background-image: radial-gradient(circle, rgba(0,144,208,0.22) 1px, transparent 1px);
+  background-size: 90px 90px;
+  animation: starField 65s linear infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   23. ANIMAL CROSSING — Soft dark green, gentle floating nature dots
+   ════════════════════════════════════════════════════════════════════════════ */
+.personality-animal-crossing {
+  background: linear-gradient(160deg, #020a05 0%, #051808 60%, #020a05 100%);
+}
+.personality-animal-crossing::before {
+  background-image: radial-gradient(circle, rgba(80,200,130,0.12) 2px, transparent 2px);
+  background-size: 55px 55px;
+  animation: floatUp 20s linear infinite;
+}
+.personality-animal-crossing::after {
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(80,200,130,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 40%, rgba(96,216,192,0.08) 0%, transparent 50%);
+  animation: slowPulse 8s ease-in-out infinite alternate;
 }
