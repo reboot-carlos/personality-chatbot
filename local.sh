@@ -12,9 +12,9 @@ fi
 
 if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
   printf '\n  \033[1;31mERROR:\033[0m ANTHROPIC_API_KEY is not set.\n\n'
-  printf '  Usage:  ANTHROPIC_API_KEY=sk-ant-... ./start.sh\n'
+  printf '  Usage:  ANTHROPIC_API_KEY=sk-ant-... ./local.sh\n'
   printf '  Or:     export ANTHROPIC_API_KEY=sk-ant-...\n'
-  printf '          ./start.sh\n\n'
+  printf '          ./local.sh\n\n'
   exit 1
 fi
 
