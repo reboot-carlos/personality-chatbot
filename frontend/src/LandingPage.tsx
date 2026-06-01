@@ -1,5 +1,5 @@
-import React, { Component, ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import React, { useRef, useEffect, Component, ReactNode } from 'react'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { PERSONALITIES } from './personalities'
 
 const PERSONALITY_LIST = PERSONALITIES.filter(p => p.category === 'personality')
@@ -207,7 +207,7 @@ function DoodleCloud({ color, size }: { color: string; size: number }) {
   )
 }
 
-// ── Floating doodle item ──────────────────────────────────────────────────────
+// ── Floating doodle item with cursor repulsion ────────────────────────────────
 
 interface FloatProps {
   children: React.ReactNode
@@ -219,22 +219,54 @@ interface FloatProps {
   duration?: number
 }
 
+const REPEL_RADIUS = 140
+const REPEL_STRENGTH = 100
+
 function FloatingDoodle({ children, x, y, rotate = 0, delay = 0, amplitude = 12, duration = 5 }: FloatProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+  const springX = useSpring(rawX, { stiffness: 200, damping: 20, mass: 0.8 })
+  const springY = useSpring(rawY, { stiffness: 200, damping: 20, mass: 0.8 })
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!ref.current) return
+      const rect = ref.current.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      const dx = cx - e.clientX
+      const dy = cy - e.clientY
+      const dist = Math.sqrt(dx * dx + dy * dy)
+
+      if (dist < REPEL_RADIUS && dist > 0) {
+        const force = (1 - dist / REPEL_RADIUS)
+        rawX.set((dx / dist) * force * REPEL_STRENGTH)
+        rawY.set((dy / dist) * force * REPEL_STRENGTH)
+      } else {
+        rawX.set(0)
+        rawY.set(0)
+      }
+    }
+
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [rawX, rawY])
+
   return (
     <motion.div
-      style={{ position: 'absolute', left: x, top: y }}
-      animate={{
-        y: [0, -amplitude, 0, amplitude * 0.6, 0],
-        rotate: [rotate, rotate + 4, rotate, rotate - 3, rotate],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
+      ref={ref}
+      style={{ position: 'absolute', left: x, top: y, x: springX, y: springY }}
     >
-      {children}
+      <motion.div
+        animate={{
+          y: [0, -amplitude, 0, amplitude * 0.6, 0],
+          rotate: [rotate, rotate + 4, rotate, rotate - 3, rotate],
+        }}
+        transition={{ duration, delay, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        {children}
+      </motion.div>
     </motion.div>
   )
 }
